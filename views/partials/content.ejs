@@ -79,21 +79,21 @@
 <% if (title == 'Create Author') { %>
     <div class="col-sm-8">    
         <div class="jumbotron">
-            <form action="/blog/author/create" method="post">
+            <form action="" method="post">
               First Name:<br>
-              <input type="text" name="first_name" value="First Name">
+              <input type="text" name="first_name" placeholder="First Name">
               <br>
               Last Name:<br>
-              <input type="text" name="last_name" value="Last Name">
+              <input type="text" name="last_name" placeholder="Last Name">
               <br>
               Username:<br>
-              <input type="text" name="username" value="Username">
+              <input type="text" name="username" placeholder="Username">
               <br>
               Email:<br>
-              <input type="text" name="email" value="email@email.com">
+              <input type="text" name="email" placeholder="email@email.com">
               <br>
               Role:<br>
-              <input type="text" name="role" value="Role">
+              <input type="text" name="role" placeholder="Role">
               <br><br>
               <input type="submit" value="Submit">
             </form>
@@ -105,23 +105,23 @@
 <% } else if (title == 'Update Author') { %>
     <div class="col-sm-8">    
         <div class="jumbotron">
-            <form action="/blog/author/<%= author.id %>/update" method="post">
+            <form action="" method="post">
               First Name:<br>
-              <input type="text" name="first_name" value="First Name">
+              <input type="text" name="first_name" value=<%= author.first_name %> >
               <br>
               Last Name:<br>
-              <input type="text" name="last_name" value="Last Name">
+              <input type="text" name="last_name" value=<%= author.last_name %> >
               <br>
               Username:<br>
-              <input type="text" name="username" value="Username">
+              <input type="text" name="username" value=<%= author.username %> >
               <br>
               Email:<br>
-              <input type="text" name="email" value="Email">
+              <input type="text" name="email" value=<%= author.email %> >
               <br>
               Role:<br>
-              <input type="text" name="role" value="Role">
+              <input type="text" name="role" value=<%= author.role %>>
               <br><br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Update">
             </form>
         </div>
     </div>
@@ -141,14 +141,15 @@
     <div class="col-sm-8">    
         <div class="">
             <ol>
-            <% authors.forEach(function(user) { %>
+            <% authors.forEach(function(author) { %>
+            <% console.log(authors) %>
                     <li>
                         <h4><a href="/blog/author/<%= author.id %>"><%= author.first_name %></a></h4>
                         <p><%= author.last_name %></p>
                         <p><%= author.username %></p>
                         <p><%= author.email %></p>
                         <p><%= author.role %></p>
-                         <a href="/blog/author/<%= user.id %>/update">Edit  User</a> | <a href="/users/<%= user.id %>/delete">Delete User</a>
+                         <a href="/blog/author/<%= author.id %>/update">Edit  Author</a> | <a href="/authors/<%= author.id %>/delete">Delete Author</a>
                     </li>
                 <br/>
             <% }); %>
@@ -248,10 +249,125 @@
 <!--COMMENT VIEW STARTS HERE-->
 <!--complete logic for category view-->
 
+<% if (title == 'Create Comment') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              Title:<br>
+              <input type="text" name="title" placeholder="title">
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Delete Comment') { %>
+     
+<% } else if (title == 'Update Comment') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            
+            <form action="" method="post">
+              Title:<br>
+              <input type="text" name="title" value=<%= comment.title %> >
+              <br>
+              <br><br>
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+   
+<% } else if (title == 'Comment Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Comment</h1>
+             <p>Welcome to comment <%= comment.id %></p>
+             <p>Comment:  <%= comment.title %></p>
+             <a href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Comment List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <ol>
+            <% comments.forEach(function(comment) { %>
+            <% console.log(comments) %>
+                    <li>
+                        <h4><a href="/blog/comment/<%= comment.id %>"><%= comment.title %></a></h4>
+                         <a href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+                    </li>
+                <br/>
+            <% }); %>
+            </ol>
+        </div>
+    </div>
+  
+<% }  %>
+
 <!--COMMENT VIEW END HERE-->
 
 <!--CATEGORY VIEW START HERE-->
 <!--complete logic for category view-->
+
+<!-- CATEGORY VIEW STARTS HERE -->
+<% if (title == 'Create Category') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              Name:<br>
+              <input type="text" name="name" placeholder="Name">
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Delete Category') { %>
+     
+<% } else if (title == 'Update Category') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            
+            <form action="" method="post">
+              Name:<br>
+              <input type="text" name="name" value=<%= category.name %> >
+              <br>
+              <br><br>
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+   
+<% } else if (title == 'Category Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Single category</h1>
+             <p>Welcome to category <%= category.id %></p>
+             <p>Category:  <%= category.name %></p>
+             <a href="/blog/category/<%= category.id %>/update">Edit  Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Category List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <ol>
+            <% categories.forEach(function(category) { %>
+            <% console.log(categories) %>
+                    <li>
+                        <h4><a href="/blog/category/<%= category.id %>"><%= category.name %></a></h4>
+                         <a href="/blog/category/<%= category.id %>/update">Edit  Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+                    </li>
+                <br/>
+            <% }); %>
+            </ol>
+        </div>
+    </div>
+  
+<% }  %>
+
+
 <!--CATEGORY VIEW END HERE-->
 
 
