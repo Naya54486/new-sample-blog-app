@@ -248,10 +248,125 @@
 <!--COMMENT VIEW STARTS HERE-->
 <!--complete logic for category view-->
 
+<% if (title == 'Create Comment') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              Title:<br>
+              <input type="text" name="title" placeholder="title">
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Delete Comment') { %>
+     
+<% } else if (title == 'Update Comment') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            
+            <form action="" method="post">
+              Title:<br>
+              <input type="text" name="title" value=<%= comment.title %> >
+              <br>
+              <br><br>
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+   
+<% } else if (title == 'Comment Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Comment</h1>
+             <p>Welcome to comment <%= comment.id %></p>
+             <p>Comment:  <%= comment.title %></p>
+             <a href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Comment List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <ol>
+            <% comments.forEach(function(comment) { %>
+            <% console.log(comments) %>
+                    <li>
+                        <h4><a href="/blog/comment/<%= comment.id %>"><%= comment.title %></a></h4>
+                         <a href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+                    </li>
+                <br/>
+            <% }); %>
+            </ol>
+        </div>
+    </div>
+  
+<% }  %>
+
 <!--COMMENT VIEW END HERE-->
 
 <!--CATEGORY VIEW START HERE-->
 <!--complete logic for category view-->
+
+<!-- CATEGORY VIEW STARTS HERE -->
+<% if (title == 'Create Category') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              Name:<br>
+              <input type="text" name="name" placeholder="Name">
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Delete Category') { %>
+     
+<% } else if (title == 'Update Category') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            
+            <form action="" method="post">
+              Name:<br>
+              <input type="text" name="name" value=<%= category.name %> >
+              <br>
+              <br><br>
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+   
+<% } else if (title == 'Category Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Single category</h1>
+             <p>Welcome to category <%= category.id %></p>
+             <p>Category:  <%= category.name %></p>
+             <a href="/blog/category/<%= category.id %>/update">Edit  Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+        </div>
+    </div>
+ 
+<% } else if (title == 'Category List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <ol>
+            <% categories.forEach(function(category) { %>
+            <% console.log(categories) %>
+                    <li>
+                        <h4><a href="/blog/category/<%= category.id %>"><%= category.name %></a></h4>
+                         <a href="/blog/category/<%= category.id %>/update">Edit  Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+                    </li>
+                <br/>
+            <% }); %>
+            </ol>
+        </div>
+    </div>
+  
+<% }  %>
+
+
 <!--CATEGORY VIEW END HERE-->
 
 
