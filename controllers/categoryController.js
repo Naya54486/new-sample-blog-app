@@ -126,7 +126,7 @@ exports.category_list = function(req, res, next) {
         models.Category.findAll(
         ).then(category => {
                 res.json({
-                    success: 'List of All Authors',
+                    success: 'List of All Categories',
                     author: category
                 });
             }).catch(error => {
